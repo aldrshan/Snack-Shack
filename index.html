@@ -1,0 +1,1569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>⚡ Mega Snack Shack &amp; Drink Stand ⚡</title>
+    <!-- Fun Display & Body Fonts with crisp fallbacks -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ==========================================================================
+           1. CSS VARIABLES & RESET (Vibrant Pop-Art / Arcade Aesthetic)
+           ========================================================================== */
+        :root {
+            --bg-cream: #FFFDF5;
+            --bg-dots: #FFE8A3;
+            --ink: #18181B;
+            --yellow: #FFD60A;
+            --pink: #FF4D8D;
+            --cyan: #00E5FF;
+            --lime: #39FF14;
+            --purple: #9D4EDD;
+            --orange: #FF7B00;
+            --white: #FFFFFF;
+            --border-w: 3px;
+            --shadow-hard: 5px 5px 0px var(--ink);
+            --shadow-hover: 8px 8px 0px var(--ink);
+            --shadow-active: 2px 2px 0px var(--ink);
+            --radius-lg: 20px;
+            --radius-md: 14px;
+            --radius-pill: 999px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg-cream);
+            background-image: radial-gradient(var(--bg-dots) 2.5px, transparent 2.5px);
+            background-size: 24px 24px;
+            color: var(--ink);
+            min-height: 100vh;
+            padding-bottom: 130px;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .font-display {
+            font-family: 'Fredoka', 'Comic Sans MS', 'Trebuchet MS', sans-serif;
+        }
+
+        /* ==========================================================================
+           2. HEADER & MARQUEE BANNER
+           ========================================================================== */
+        .top-marquee {
+            background: var(--ink);
+            color: var(--yellow);
+            font-family: 'Fredoka', sans-serif;
+            font-weight: 700;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            padding: 6px 0;
+            overflow: hidden;
+            white-space: nowrap;
+            border-bottom: var(--border-w) solid var(--ink);
+        }
+
+        .marquee-track {
+            display: inline-block;
+            animation: marqueeScroll 22s linear infinite;
+        }
+
+        @keyframes marqueeScroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        header {
+            max-width: 960px;
+            margin: 20px auto 10px;
+            padding: 0 16px;
+        }
+
+        .hero-box {
+            background: var(--yellow);
+            border: var(--border-w) solid var(--ink);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-hard);
+            padding: 20px 24px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            position: relative;
+        }
+
+        .hero-title-group {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .hero-badge {
+            background: var(--pink);
+            color: var(--white);
+            width: 58px;
+            height: 58px;
+            border-radius: 16px;
+            border: var(--border-w) solid var(--ink);
+            box-shadow: 3px 3px 0px var(--ink);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            transform: rotate(-6deg);
+            animation: badgeWobble 3s ease-in-out infinite;
+        }
+
+        @keyframes badgeWobble {
+            0%, 100% { transform: rotate(-6deg) scale(1); }
+            50% { transform: rotate(6deg) scale(1.06); }
+        }
+
+        .hero-title {
+            font-size: clamp(1.65rem, 4vw, 2.4rem);
+            font-weight: 700;
+            line-height: 1.05;
+            text-transform: uppercase;
+            letter-spacing: -0.5px;
+        }
+
+        .hero-subtitle {
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-top: 4px;
+            color: #333;
+        }
+
+        .stash-pill {
+            background: var(--cyan);
+            border: var(--border-w) solid var(--ink);
+            border-radius: var(--radius-pill);
+            padding: 8px 18px;
+            font-family: 'Fredoka', sans-serif;
+            font-weight: 700;
+            font-size: 1.05rem;
+            box-shadow: 3px 3px 0px var(--ink);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* ==========================================================================
+           3. MAIN MENU LAYOUT & CATEGORY HEADERS
+           ========================================================================== */
+        main {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 12px 16px 32px;
+        }
+
+        .category-section {
+            margin-top: 26px;
+        }
+
+        .category-header {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--white);
+            border: var(--border-w) solid var(--ink);
+            border-radius: var(--radius-pill);
+            padding: 8px 20px;
+            box-shadow: 4px 4px 0px var(--ink);
+            margin-bottom: 18px;
+        }
+
+        .category-header.drinks-tag { background: var(--cyan); }
+        .category-header.snacks-tag { background: var(--pink); color: var(--white); }
+
+        .category-header h2 {
+            font-size: 1.4rem;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(265px, 1fr));
+            gap: 20px;
+        }
+
+        /* ==========================================================================
+           4. PLAYFUL MENU CARDS & CONTROLS
+           ========================================================================== */
+        .menu-card {
+            background: var(--white);
+            border: var(--border-w) solid var(--ink);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-hard);
+            padding: 18px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            cursor: pointer;
+            user-select: none;
+            transition: transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.18s ease, background-color 0.2s ease;
+        }
+
+        .menu-card:hover {
+            transform: translate(-3px, -4px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .menu-card:active {
+            transform: translate(2px, 2px);
+            box-shadow: var(--shadow-active);
+        }
+
+        .menu-card.selected {
+            background: #FFF7D6;
+            border-color: var(--ink);
+        }
+
+        .card-top {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 16px;
+        }
+
+        /* Icon Stage Box */
+        .icon-stage {
+            width: 82px;
+            height: 82px;
+            border-radius: 18px;
+            border: var(--border-w) solid var(--ink);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            flex-shrink: 0;
+            overflow: visible;
+            box-shadow: 3px 3px 0px var(--ink);
+        }
+
+        .icon-stage svg {
+            width: 68px;
+            height: 68px;
+            overflow: visible;
+        }
+
+        .item-info {
+            flex-grow: 1;
+        }
+
+        .item-name {
+            font-size: 1.35rem;
+            font-weight: 700;
+            line-height: 1.15;
+            margin-bottom: 4px;
+        }
+
+        .item-tagline {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #52525B;
+            margin-bottom: 8px;
+        }
+
+        .price-badge {
+            display: inline-block;
+            background: var(--yellow);
+            border: 2px solid var(--ink);
+            border-radius: 10px;
+            padding: 3px 10px;
+            font-family: 'Fredoka', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            box-shadow: 2px 2px 0px var(--ink);
+        }
+
+        /* Stepper Bar */
+        .card-actions {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 12px;
+            border-top: 2px dashed #D4D4D8;
+        }
+
+        .tap-hint {
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #71717A;
+        }
+
+        .stepper {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-step {
+            width: 38px;
+            height: 38px;
+            border-radius: 12px;
+            border: var(--border-w) solid var(--ink);
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.35rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 2px 2px 0px var(--ink);
+            transition: transform 0.1s ease;
+        }
+
+        .btn-step:active {
+            transform: translate(2px, 2px);
+            box-shadow: 0px 0px 0px var(--ink);
+        }
+
+        .btn-minus {
+            background: #FFE4E6;
+            color: var(--ink);
+        }
+
+        .btn-plus {
+            background: var(--lime);
+            color: var(--ink);
+        }
+
+        .qty-pill {
+            min-width: 32px;
+            text-align: center;
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            background: var(--white);
+            border: 2px solid var(--ink);
+            border-radius: 8px;
+            padding: 2px 6px;
+        }
+
+        /* ==========================================================================
+           5. CUSTOM HILARIOUS ITEM ANIMATIONS (Hover + .is-acting Click Burst)
+           ========================================================================== */
+
+        /* 1. RED BULL: Sprouts flapping wings & zooms/bounces caffeinated */
+        .rb-wing-l, .rb-wing-r {
+            opacity: 0;
+            transform-origin: center;
+            transition: opacity 0.15s ease;
+        }
+        .card-red-bull:hover .rb-wing-l,
+        .card-red-bull.is-acting .rb-wing-l {
+            opacity: 1;
+            animation: flapLeft 0.18s infinite alternate ease-in-out;
+        }
+        .card-red-bull:hover .rb-wing-r,
+        .card-red-bull.is-acting .rb-wing-r {
+            opacity: 1;
+            animation: flapRight 0.18s infinite alternate ease-in-out;
+        }
+        .card-red-bull:hover .rb-can,
+        .card-red-bull.is-acting .rb-can {
+            animation: caffeinatedZoom 0.35s infinite ease-in-out;
+        }
+        @keyframes flapLeft {
+            0% { transform: rotate(-15deg) scaleX(0.85); }
+            100% { transform: rotate(25deg) scaleX(1.15); }
+        }
+        @keyframes flapRight {
+            0% { transform: rotate(15deg) scaleX(0.85); }
+            100% { transform: rotate(-25deg) scaleX(1.15); }
+        }
+        @keyframes caffeinatedZoom {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(-2px, -5px) rotate(-4deg); }
+            50% { transform: translate(2px, -7px) rotate(4deg); }
+            75% { transform: translate(-1px, -3px) rotate(-2deg); }
+        }
+
+        /* 2. MONSTER: Claw scratch / roar shake + glowing neon eyes */
+        .monster-eyes {
+            opacity: 0.35;
+            transition: opacity 0.15s;
+        }
+        .monster-claws {
+            opacity: 0;
+            transform: scale(0.5);
+        }
+        .card-monster:hover .monster-eyes,
+        .card-monster.is-acting .monster-eyes {
+            opacity: 1;
+            filter: drop-shadow(0 0 5px #39FF14);
+        }
+        .card-monster:hover .monster-can,
+        .card-monster.is-acting .monster-can {
+            animation: beastRoar 0.3s infinite linear;
+        }
+        .card-monster.is-acting .monster-claws {
+            animation: clawSlash 0.55s ease-out forwards;
+        }
+        @keyframes beastRoar {
+            0%, 100% { transform: translate(0, 0) scale(1.05); }
+            20% { transform: translate(-3px, 2px) rotate(-5deg) scale(1.08); }
+            40% { transform: translate(3px, -2px) rotate(5deg) scale(1.08); }
+            60% { transform: translate(-3px, -1px) rotate(-4deg) scale(1.08); }
+            80% { transform: translate(3px, 2px) rotate(4deg) scale(1.08); }
+        }
+        @keyframes clawSlash {
+            0% { opacity: 1; transform: scale(0.6) rotate(-10deg); }
+            60% { opacity: 1; transform: scale(1.15) rotate(0deg); }
+            100% { opacity: 0; transform: scale(1.3) rotate(5deg); }
+        }
+
+        /* 3. COKES: Fizzes, shakes, pops tab & shoots floating bubbles */
+        .coke-bubble {
+            opacity: 0;
+        }
+        .card-cokes:hover .coke-can,
+        .card-cokes.is-acting .coke-can {
+            animation: fizzShake 0.25s infinite ease-in-out;
+        }
+        .card-cokes:hover .coke-bubble,
+        .card-cokes.is-acting .coke-bubble {
+            animation: bubbleRise 0.75s infinite ease-out;
+        }
+        .card-cokes:hover .b2, .card-cokes.is-acting .b2 { animation-delay: 0.2s; }
+        .card-cokes:hover .b3, .card-cokes.is-acting .b3 { animation-delay: 0.4s; }
+        .card-cokes.is-acting .coke-cap {
+            animation: popTop 0.55s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+        }
+        @keyframes fizzShake {
+            0%, 100% { transform: rotate(-3deg) translateY(0); }
+            50% { transform: rotate(3deg) translateY(-2px); }
+        }
+        @keyframes bubbleRise {
+            0% { opacity: 1; transform: translateY(0) scale(0.6); }
+            100% { opacity: 0; transform: translateY(-26px) scale(1.3); }
+        }
+        @keyframes popTop {
+            0% { transform: translateY(0) rotate(0deg); }
+            45% { transform: translateY(-16px) rotate(-25deg); }
+            100% { transform: translateY(0) rotate(0deg); }
+        }
+
+        /* 4. WATER: Dramatic splash wave wobble + bouncing droplets */
+        .water-drop {
+            opacity: 0;
+        }
+        .card-water:hover .water-bottle,
+        .card-water.is-acting .water-bottle {
+            animation: waveWobble 0.6s infinite ease-in-out;
+            transform-origin: bottom center;
+        }
+        .card-water:hover .water-drop,
+        .card-water.is-acting .water-drop {
+            animation: splashDrop 0.65s infinite ease-out;
+        }
+        .card-water:hover .wd2, .card-water.is-acting .wd2 { animation-delay: 0.22s; }
+        @keyframes waveWobble {
+            0%, 100% { transform: rotate(0deg) scaleY(1); }
+            25% { transform: rotate(-10deg) scaleY(0.94); }
+            50% { transform: rotate(10deg) scaleY(1.06); }
+            75% { transform: rotate(-6deg) scaleY(0.97); }
+        }
+        @keyframes splashDrop {
+            0% { opacity: 1; transform: translate(0, 0) scale(0.7); }
+            50% { opacity: 1; transform: translate(var(--dx, -10px), -18px) scale(1.1); }
+            100% { opacity: 0; transform: translate(var(--dx2, -16px), 4px) scale(0.6); }
+        }
+
+        /* 5. GUM: Blows giant pink bubble that inflates and POPS! */
+        .gum-bubble {
+            transform-origin: 42px 26px;
+            transform: scale(0.2);
+            opacity: 0;
+        }
+        .gum-pop-burst {
+            opacity: 0;
+            transform-origin: 42px 26px;
+        }
+        .card-gum:hover .gum-bubble {
+            opacity: 0.9;
+            animation: inflateHover 0.9s infinite alternate ease-in-out;
+        }
+        .card-gum.is-acting .gum-bubble {
+            animation: bubbleInflateAndPop 0.65s forwards ease-out;
+        }
+        .card-gum.is-acting .gum-pop-burst {
+            animation: popStarBurst 0.65s forwards ease-out;
+        }
+        @keyframes inflateHover {
+            0% { transform: scale(0.35); }
+            100% { transform: scale(1.05); }
+        }
+        @keyframes bubbleInflateAndPop {
+            0% { opacity: 0.95; transform: scale(0.3); }
+            65% { opacity: 0.95; transform: scale(1.45); }
+            75% { opacity: 0; transform: scale(1.65); }
+            100% { opacity: 0; transform: scale(0.2); }
+        }
+        @keyframes popStarBurst {
+            0%, 65% { opacity: 0; transform: scale(0.4); }
+            75% { opacity: 1; transform: scale(1.2); }
+            100% { opacity: 0; transform: scale(1.5); }
+        }
+
+        /* 6. BEEF JERKY: Flexes cartoon bicep arms & tough-guy wiggle */
+        .jerky-arm-l { transform-origin: 18px 34px; }
+        .jerky-arm-r { transform-origin: 46px 34px; }
+        .card-beef-jerky:hover .jerky-body,
+        .card-beef-jerky.is-acting .jerky-body {
+            animation: toughWiggle 0.45s infinite ease-in-out;
+        }
+        .card-beef-jerky:hover .jerky-arm-l,
+        .card-beef-jerky.is-acting .jerky-arm-l {
+            animation: flexLeftArm 0.45s infinite alternate ease-in-out;
+        }
+        .card-beef-jerky:hover .jerky-arm-r,
+        .card-beef-jerky.is-acting .jerky-arm-r {
+            animation: flexRightArm 0.45s infinite alternate ease-in-out;
+        }
+        @keyframes toughWiggle {
+            0%, 100% { transform: rotate(-4deg) scale(1.03); }
+            50% { transform: rotate(4deg) scale(1.06); }
+        }
+        @keyframes flexLeftArm {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(-28deg) scale(1.15); }
+        }
+        @keyframes flexRightArm {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(28deg) scale(1.15); }
+        }
+
+        /* 7. CHIPS: Bag puffs up, crinkles wildly, and shoots a flying potato chip! */
+        .flying-chip {
+            opacity: 0;
+            transform-origin: center;
+        }
+        .card-chips:hover .chips-bag,
+        .card-chips.is-acting .chips-bag {
+            animation: bagCrinkle 0.25s infinite ease-in-out;
+            transform-origin: center;
+        }
+        .card-chips:hover .flying-chip,
+        .card-chips.is-acting .flying-chip {
+            animation: launchChip 0.7s infinite ease-out;
+        }
+        @keyframes bagCrinkle {
+            0%, 100% { transform: scale(1.06, 0.94) rotate(-3deg); }
+            50% { transform: scale(0.94, 1.08) rotate(3deg); }
+        }
+        @keyframes launchChip {
+            0% { opacity: 1; transform: translate(0, 4px) rotate(0deg) scale(0.6); }
+            50% { opacity: 1; transform: translate(12px, -24px) rotate(180deg) scale(1.15); }
+            100% { opacity: 0; transform: translate(24px, -10px) rotate(360deg) scale(0.8); }
+        }
+
+        /* 8. COOKIES: Takes a giant cartoon bite & scatters crumbs */
+        .cookie-bite-mask {
+            opacity: 0;
+            transition: opacity 0.1s;
+        }
+        .cookie-crumb {
+            opacity: 0;
+        }
+        .card-cookies:hover .cookie-whole,
+        .card-cookies.is-acting .cookie-whole {
+            animation: chompBounce 0.4s ease-in-out;
+        }
+        .card-cookies:hover .cookie-bite-mask,
+        .card-cookies.is-acting .cookie-bite-mask {
+            opacity: 1;
+        }
+        .card-cookies:hover .cookie-crumb,
+        .card-cookies.is-acting .cookie-crumb {
+            animation: scatterCrumbs 0.65s infinite ease-out;
+        }
+        .card-cookies:hover .cc2, .card-cookies.is-acting .cc2 { animation-delay: 0.15s; }
+        .card-cookies:hover .cc3, .card-cookies.is-acting .cc3 { animation-delay: 0.3s; }
+        @keyframes chompBounce {
+            0%, 100% { transform: scale(1); }
+            40% { transform: scale(0.86) rotate(-8deg); }
+            75% { transform: scale(1.08) rotate(4deg); }
+        }
+        @keyframes scatterCrumbs {
+            0% { opacity: 1; transform: translate(0, 0) scale(1); }
+            100% { opacity: 0; transform: translate(var(--cx, 16px), var(--cy, 14px)) scale(0.5); }
+        }
+
+        /* 9. CANDY BARS: Unwraps itself with golden shimmer & happy dance */
+        .candy-wrapper {
+            transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .candy-sparkle {
+            opacity: 0;
+        }
+        .card-candy-bars:hover .candy-group,
+        .card-candy-bars.is-acting .candy-group {
+            animation: happyCandyDance 0.5s infinite ease-in-out;
+        }
+        .card-candy-bars:hover .candy-wrapper,
+        .card-candy-bars.is-acting .candy-wrapper {
+            transform: translateY(10px) scaleY(0.85);
+        }
+        .card-candy-bars:hover .candy-sparkle,
+        .card-candy-bars.is-acting .candy-sparkle {
+            animation: sparkleTwinkle 0.6s infinite alternate ease-in-out;
+        }
+        @keyframes happyCandyDance {
+            0%, 100% { transform: rotate(-6deg) translateY(0); }
+            50% { transform: rotate(6deg) translateY(-5px); }
+        }
+        @keyframes sparkleTwinkle {
+            0% { opacity: 0.2; transform: scale(0.6) rotate(0deg); }
+            100% { opacity: 1; transform: scale(1.25) rotate(45deg); }
+        }
+
+        /* 10. RICE KRISPY TREATS: Snap, Crackle, Pop! Jumps up with comic text bursts */
+        .rk-comic-burst {
+            opacity: 0;
+            transform-origin: center;
+        }
+        .card-rice-krispy:hover .rk-treat,
+        .card-rice-krispy.is-acting .rk-treat {
+            animation: krispyJump 0.45s infinite ease-in-out;
+        }
+        .card-rice-krispy:hover .rk-comic-burst,
+        .card-rice-krispy.is-acting .rk-comic-burst {
+            animation: comicPopText 0.65s infinite ease-out;
+        }
+        @keyframes krispyJump {
+            0%, 100% { transform: translateY(0) scale(1.04, 0.96); }
+            50% { transform: translateY(-9px) scale(0.95, 1.07) rotate(4deg); }
+        }
+        @keyframes comicPopText {
+            0% { opacity: 0; transform: scale(0.5) translateY(4px); }
+            40% { opacity: 1; transform: scale(1.12) translateY(-4px); }
+            100% { opacity: 0; transform: scale(1.2) translateY(-10px); }
+        }
+
+        /* ==========================================================================
+           6. FLOATING CALLOUT TEXT ON CLICK ("+1 ZOOM!", "POP!", "CRUNCH!")
+           ========================================================================== */
+        .floating-callout {
+            position: fixed;
+            pointer-events: none;
+            font-family: 'Fredoka', sans-serif;
+            font-weight: 700;
+            font-size: 1.15rem;
+            color: var(--ink);
+            background: var(--yellow);
+            border: 2.5px solid var(--ink);
+            border-radius: 12px;
+            padding: 3px 10px;
+            box-shadow: 3px 3px 0px var(--ink);
+            z-index: 999;
+            animation: floatUpAndFade 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes floatUpAndFade {
+            0% { opacity: 1; transform: translate(-50%, 0) scale(0.7) rotate(-6deg); }
+            50% { opacity: 1; transform: translate(-50%, -32px) scale(1.1) rotate(4deg); }
+            100% { opacity: 0; transform: translate(-50%, -56px) scale(0.95) rotate(-2deg); }
+        }
+
+        /* ==========================================================================
+           7. STICKY BOTTOM "SNACK STASH" BAR
+           ========================================================================== */
+        .stash-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--white);
+            border-top: var(--border-w) solid var(--ink);
+            box-shadow: 0 -6px 0px rgba(24, 24, 27, 0.08);
+            z-index: 50;
+            padding: 12px 16px;
+        }
+
+        .stash-inner {
+            max-width: 960px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .total-readout {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .total-label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #52525B;
+        }
+
+        .total-amount-row {
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+        }
+
+        .total-amount {
+            font-family: 'Fredoka', sans-serif;
+            font-size: clamp(1.6rem, 4vw, 2.1rem);
+            font-weight: 700;
+            color: var(--ink);
+            line-height: 1;
+        }
+
+        .total-count-sub {
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: #52525B;
+        }
+
+        .stash-buttons {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-action {
+            font-family: 'Fredoka', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            padding: 12px 18px;
+            border-radius: 14px;
+            border: var(--border-w) solid var(--ink);
+            box-shadow: 3px 3px 0px var(--ink);
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: transform 0.1s ease, background-color 0.15s ease;
+        }
+
+        .btn-action:active:not(:disabled) {
+            transform: translate(2px, 2px);
+            box-shadow: 1px 1px 0px var(--ink);
+        }
+
+        .btn-action:disabled {
+            opacity: 0.45;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+
+        .btn-clear {
+            background: #F4F4F5;
+            color: var(--ink);
+        }
+
+        .btn-checkout {
+            background: var(--lime);
+            color: var(--ink);
+            font-size: 1.05rem;
+        }
+
+        /* ==========================================================================
+           8. CHECKOUT RECEIPT MODAL & CONFETTI CANVAS
+           ========================================================================== */
+        #confetti-canvas {
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 120;
+        }
+
+        .modal-backdrop {
+            position: fixed;
+            inset: 0;
+            background: rgba(24, 24, 27, 0.65);
+            backdrop-filter: blur(3px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+            z-index: 100;
+        }
+
+        .modal-backdrop.open {
+            display: flex;
+        }
+
+        .receipt-modal {
+            background: var(--white);
+            border: var(--border-w) solid var(--ink);
+            border-radius: 24px;
+            box-shadow: 8px 8px 0px var(--ink);
+            max-width: 440px;
+            width: 100%;
+            padding: 24px;
+            position: relative;
+            animation: modalPopIn 0.28s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        @keyframes modalPopIn {
+            0% { opacity: 0; transform: scale(0.82) translateY(20px); }
+            100% { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        .receipt-header {
+            text-align: center;
+            border-bottom: 3px dashed var(--ink);
+            padding-bottom: 14px;
+            margin-bottom: 16px;
+        }
+
+        .receipt-header h3 {
+            font-size: 1.65rem;
+            text-transform: uppercase;
+        }
+
+        .receipt-items {
+            list-style: none;
+            max-height: 240px;
+            overflow-y: auto;
+            margin-bottom: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .receipt-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 700;
+            font-size: 1rem;
+            background: #FAFAFA;
+            padding: 8px 12px;
+            border-radius: 10px;
+            border: 2px solid #E4E4E7;
+        }
+
+        .receipt-total-box {
+            background: var(--yellow);
+            border: var(--border-w) solid var(--ink);
+            border-radius: 14px;
+            padding: 12px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.45rem;
+            font-weight: 700;
+            margin-bottom: 18px;
+        }
+
+        .modal-footer-btns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .modal-footer-btns .btn-action {
+            justify-content: center;
+            width: 100%;
+        }
+
+        @media (max-width: 480px) {
+            .btn-action {
+                padding: 10px 14px;
+                font-size: 0.92rem;
+            }
+            .icon-stage {
+                width: 72px;
+                height: 72px;
+            }
+            .icon-stage svg {
+                width: 60px;
+                height: 60px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Celebratory Confetti Overlay -->
+    <canvas id="confetti-canvas"></canvas>
+
+    <!-- Top Scrolling Arcade Banner -->
+    <div class="top-marquee" aria-hidden="true">
+        <div class="marquee-track">
+            ⚡ ICE COLD DRINKS &amp; MEGA CRUNCHY SNACKS ⚡ TAP ANY CARD TO ADD TO YOUR STASH ⚡ ZERO TAX, ALL VIBES ⚡ ICE COLD DRINKS &amp; MEGA CRUNCHY SNACKS ⚡ TAP ANY CARD TO ADD TO YOUR STASH ⚡ ZERO TAX, ALL VIBES ⚡
+        </div>
+    </div>
+
+    <!-- Main Hero Header -->
+    <header>
+        <div class="hero-box">
+            <div class="hero-title-group">
+                <div class="hero-badge" aria-hidden="true">🕹️</div>
+                <div>
+                    <h1 class="hero-title">Mega Snack Shack</h1>
+                    <p class="hero-subtitle">Hover or tap any item to see it go wild!</p>
+                </div>
+            </div>
+            <div class="stash-pill">
+                <span>🎒 Snack Stash:</span>
+                <span id="header-badge-count">0</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Menu Container -->
+    <main>
+        <!-- DRINKS SECTION -->
+        <section class="category-section" aria-labelledby="heading-drinks">
+            <div class="category-header drinks-tag">
+                <span style="font-size: 1.4rem;">🥤</span>
+                <h2 id="heading-drinks">Chilled Drinks</h2>
+            </div>
+            <div id="drinks-grid" class="menu-grid"></div>
+        </section>
+
+        <!-- SNACKS SECTION -->
+        <section class="category-section" aria-labelledby="heading-snacks">
+            <div class="category-header snacks-tag">
+                <span style="font-size: 1.4rem;">🍿</span>
+                <h2 id="heading-snacks">Crunchy &amp; Sweet Snacks</h2>
+            </div>
+            <div id="snacks-grid" class="menu-grid"></div>
+        </section>
+    </main>
+
+    <!-- Sticky Bottom Snack Stash Calculator Bar -->
+    <footer class="stash-bar">
+        <div class="stash-inner">
+            <div class="total-readout">
+                <span class="total-label">Your Snack Stash Total</span>
+                <div class="total-amount-row">
+                    <span id="stash-total" class="total-amount">$0.00</span>
+                    <span id="stash-count-label" class="total-count-sub">(0 items)</span>
+                </div>
+            </div>
+
+            <div class="stash-buttons">
+                <button id="btn-clear" class="btn-action btn-clear" onclick="clearStash()" disabled>
+                    🗑️ Clear
+                </button>
+                <button id="btn-checkout" class="btn-action btn-checkout" onclick="openCheckoutModal()" disabled>
+                    🎉 Ready to Pay
+                </button>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Checkout Summary Modal -->
+    <div id="checkout-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <div class="receipt-modal">
+            <div class="receipt-header">
+                <div style="font-size: 2.4rem; margin-bottom: 4px;">🧾✨</div>
+                <h3 id="modal-title">Official Snack Ticket</h3>
+                <p style="font-size: 0.85rem; font-weight: 700; color: #52525B;">Show this screen to grab your goodies!</p>
+            </div>
+
+            <ul id="receipt-list" class="receipt-items"></ul>
+
+            <div class="receipt-total-box">
+                <span>TOTAL DUE</span>
+                <span id="receipt-total-val">$0.00</span>
+            </div>
+
+            <div class="modal-footer-btns">
+                <button class="btn-action" style="background: var(--cyan);" onclick="copyReceiptText()" id="btn-copy-receipt">
+                    📋 Copy List
+                </button>
+                <button class="btn-action" style="background: var(--yellow);" onclick="closeCheckoutModal()">
+                    👍 Awesome!
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        /**
+         * ==========================================================================
+         * MENU DATA & CUSTOM ANIMATED SVG ILLUSTRATIONS
+         * ==========================================================================
+         */
+        const MENU_ITEMS = [
+            // --- DRINKS ---
+            {
+                id: 'red-bull',
+                name: 'Red Bull',
+                price: 2.50,
+                category: 'drinks',
+                tagline: 'Sprouts wings & zooms!',
+                callout: 'WINGS!! 🚀',
+                bg: '#DBEAFE',
+                svg: `
+                <svg viewBox="0 0 64 64">
+                    <!-- Left & Right Cartoon Wings -->
+                    <path class="rb-wing-l" d="M22 28 C8 16, 2 22, 6 30 C2 33, 8 38, 22 36 Z" fill="#FFFFFF" stroke="#18181B" stroke-width="2.5" stroke-linejoin="round"/>
+                    <path class="rb-wing-r" d="M42 28 C56 16, 62 22, 58 30 C62 33, 56 38, 42 36 Z" fill="#FFFFFF" stroke="#18181B" stroke-width="2.5" stroke-linejoin="round"/>
+                    <!-- Sleek Can -->
+                    <g class="rb-can">
+                        <rect x="22" y="12" width="20" height="40" rx="4" fill="#2563EB" stroke="#18181B" stroke-width="2.8"/>
+                        <polygon points="22,18 42,28 42,44 22,34" fill="#E5E7EB"/>
+                        <circle cx="32" cy="31" r="5" fill="#FACC15" stroke="#18181B" stroke-width="1.5"/>
+                        <path d="M26 31 L31 29 M38 31 L33 29" stroke="#DC2626" stroke-width="2.5" stroke-linecap="round"/>
+                        <rect x="24" y="9" width="16" height="3" rx="1.5" fill="#9CA3AF" stroke="#18181B" stroke-width="2"/>
+                    </g>
+                </svg>`
+            },
+            {
+                id: 'monster',
+                name: 'Monster',
+                price: 2.00,
+                category: 'drinks',
+                tagline: 'Unleashes beast roar!',
+                callout: 'ROAAAR!! 🦖',
+                bg: '#18181B',
+                svg: `
+                <svg viewBox="0 0 64 64">
+                    <g class="monster-can">
+                        <rect x="20" y="11" width="24" height="42" rx="4" fill="#27272A" stroke="#39FF14" stroke-width="2.5"/>
+                        <!-- Iconic 3 Neon Claw Marks -->
+                        <path d="M26 20 L27 36 M32 18 L32 38 M38 20 L37 36" stroke="#39FF14" stroke-width="3" stroke-linecap="round"/>
+                        <!-- Glowing Beast Eyes -->
+                        <g class="monster-eyes">
+                            <polygon points="24,42 30,44 25,46" fill="#39FF14"/>
+                            <polygon points="40,42 34,44 39,46" fill="#39FF14"/>
+                        </g>
+                    </g>
+                    <!-- Slash Overlay on Click -->
+                    <path class="monster-claws" d="M12 14 L52 50 M18 10 L56 44 M8 20 L46 54" stroke="#39FF14" stroke-width="3.5" stroke-linecap="round"/>
+                </svg>`
+            },
+            {
+                id: 'cokes',
+                name: 'Cokes',
+                price: 0.75,
+                category: 'drinks',
+                tagline: 'Fizzes & pops its top!',
+                callout: 'FIZZ POP! 🫧',
+                bg: '#FEE2E2',
+                svg: `
+                <svg viewBox="0 0 64 64">
+                    <!-- Floating Fizz Bubbles -->
+                    <circle class="coke-bubble b1" cx="25" cy="14" r="3" fill="#FFFFFF" stroke="#18181B" stroke-width="1.8"/>
+                    <circle class="coke-bubble b2" cx="35" cy="11" r="4" fill="#FFFFFF" stroke="#18181B" stroke-width="1.8"/>
+                    <circle class="coke-bubble b3" cx="41" cy="16" r="2.5" fill="#FFFFFF" stroke="#18181B" stroke-width="1.8"/>
+                    <!-- Popping Can Tab -->
+                    <rect class="coke-cap" x="27" y="11" width="10" height="4" rx="2" fill="#D1D5DB" stroke="#18181B" stroke-width="2"/>
+                    <!-- Classic Red Can -->
+                    <g class="coke-can">
+                        <rect x="19" y="15" width="26" height="38" rx="5" fill="#EF4444" stroke="#18181B" stroke-width="2.8"/>
+                        <path d="M19 32 Q32 25 45 32 Q32 39 19 32 Z" fill="#FFFFFF"/>
+                        <circle cx="27" cy="24" r="1.5" fill="#FFFFFF"/>
+                        <circle cx="38" cy="43" r="2" fill="#FFFFFF"/>
+                    </g>
+                </svg>`
+            },
+            {
+                id: 'water',
+                name: 'Water',
+                price: 0.25,
+                category: 'drinks',
+                tagline: 'Mega splash wave wobble!',
+                callout: 'SPLASH! 💦',
+                bg: '#E0F2FE',
+                svg: `
+                <svg viewBox="0 0 64 64">
+                    <!-- Bouncing Water Droplets -->
+                    <path class="water-drop" style="--dx:-12px; --dx2:-18px;" d="M18 22 C18 22, 13 28, 18 31 C23 28, 18 22, 18 22 Z" fill="#38BDF8" stroke="#18181B" stroke-width="2"/>
+                    <path class="water-drop wd2" style="--dx:12px; --dx2:18px;" d="M46 22 C46 22, 41 28, 46 31 C51 28, 46 22, 46 22 Z" fill="#38BDF8" stroke="#18181B" stroke-width="2"/>
+                    <!-- Water Bottle -->
+                    <g class="water-bottle">
+                        <rect x="27" y="8" width="10" height="5" rx="1.5" fill="#2563EB" stroke="#18181B" stroke-width="2.2"/>
+                        <path d="M25 13 L39 13 L42 21 L42 51 C42 53 40 54 38 54 L26 54 C24 54 22 53 22 51 L22 21 Z" fill="#BAE6FD" stroke="#18181B" stroke-width="2.8" stroke-linejoin="round"/>
+                        <rect x="22" y="28" width="20" height="11" fill="#0284C7" stroke="#18181B" stroke-width="2"/>
+                        <path d="M25 33 Q29 30 32 33 T39 33" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round"/>
+                    </g>
+                </svg>`
+            },
+
+            // --- SNACKS ---
+            {
+                id: 'gum',
+                name: 'Gum',
+                price: 1.00,
+                category: 'snacks',
+                tagline: 'Blows a giant bubble & POPS!',
+                callout: 'POP!! 🫧',
+                bg: '#FCE7F3',
+                svg: `
+                <svg viewBox="0 0 64 64">
+                    <!-- Gum Pack -->
+                    <rect x="14" y="24" width="26" height="28" rx="5" fill="#EC4899" stroke="#18181B" stroke-width="2.8"/>
+                    <rect x="18" y="18" width="7" height="8" rx="1.5" fill="#F9A8D4" stroke="#18181B" stroke-width="2"/>
+                    <rect x="28" y="18" width="7" height="8" rx="1.5" fill="#F9A8D4" stroke="#18181B" stroke-width="2"/>
+                    <!-- Giant Pink Bubble -->
+                    <circle class="gum-bubble" cx="42" cy="26" r="15" fill="#FF70A6" stroke="#18181B" stroke-width="2.5"/>
+                    <!-- Comic Pop Burst Lines -->
+                    <g class="gum-pop-burst" stroke="#18181B" stroke-width="2.5" stroke-linecap="round">
+                        <line x1="42" y1="6" x2="42" y2="13"/>
+                        <line x1="42" y1="39" x2="42" y2="46"/>
+                        <line x1="22" y1="26" x2="29" y2="26"/>
+                        <line x1="55" y1="26" x2="62" y2="26"/>
+                        <line x1="28" y1="12" x2="33" y2="17"/>
+                        <line x1="51" y1="35" x2="56" y2="40"/>
+                    </g>
+                </svg>`
+            },
+            {
+                id: 'beef-jerky',
+                name: 'Beef Jerky',
+                price: 1.50,
+                category: 'snacks',
+                tagline: 'Flexes huge protein muscles!',
+                callout: 'SO SWOLE! 💪',
+                bg: '#FFEDD5',
+                svg: `
+                <svg viewBox="0 0 64 64">
+                    <g class="jerky-body">
+                        <!-- Left Flexing Bicep -->
+                        <path class="jerky-arm-l" d="M20 32 C10 32, 8 22, 14 19 C17 18, 19 22, 17 25" fill="none" stroke="#18181B" stroke-width="3.5" stroke-linecap="round"/>
+                        <!-- Right Flexing Bicep -->
+                        <path class="jerky-arm-r" d="M44 32 C54 32, 56 22, 50 19 C47 18, 45 22, 47 25" fill="none" stroke="#18181B" stroke-width="3.5" stroke-linecap="round"/>
+                        <!-- Rugged Jerky Strip -->
+                        <path d="M22 14 C28 11, 38 12, 42 16 C45 22, 42 32, 44 42 C45 48, 39 53, 32 52 C24 53, 19 48, 21 40 C22 31, 18 21, 22 14 Z" fill="#9A3412" stroke="#18181B" stroke-width="2.8"/>
+                        <!-- Tough Sunglasses -->
+                        <rect x="23" y="24" width="8" height="5" rx="1" fill="#18181B"/>
+                        <rect x="33" y="24" width="8" height="5" rx="1" fill="#18181B"/>
+                        <line x1="31" y1="25" x2="33" y2="25" stroke="#18181B" stroke-width="2"/>
+                        <!-- Smirk -->
+                        <path d="M28 36 Q33 39 37 35" fill="none" stroke="#FDBA74" stroke-width="2.2" stroke-linecap="round"/>
+                    </g>
+                </svg>`
+            },
+            {
+                id: 'chips',
+                name: 'Chips',
+                price: 0.75,
+                category: 'snacks',
+                tagline: 'Crinkles & launches a chip!',
+                callout: 'CRUNCH!! 🥔',
+                bg: '#FEF9C3',
+                svg: `
+                <svg viewBox="0 0 64 64">
+                    <!-- Flying Potato Chip -->
+                    <ellipse class="flying-chip" cx="34" cy="18" rx="8" ry="5" fill="#FACC15" stroke="#18181B" stroke-width="2.2"/>
+                    <!-- Puffed Crinkly Bag -->
+                    <g class="chips-bag">
+                        <path d="M16 16 L48 16 L45 52 L19 52 Z" fill="#F59E0B" stroke="#18181B" stroke-width="2.8" stroke-linejoin="round"/>
+                        <line x1="16" y1="21" x2="48" y2="21" stroke="#18181B" stroke-width="2.2"/>
+                        <line x1="19" y1="47" x2="45" y2="47" stroke="#18181B" stroke-width="2.2"/>
+                        <circle cx="32" cy="34" r="9" fill="#EF4444" stroke="#18181B" stroke-width="2"/>
+                        <ellipse cx="32" cy="34" rx="5" ry="3" fill="#FEF08A"/>
+                    </g>
+                </svg>`
+            },
+            {
+                id: 'cookies',
+                name: 'Cookies',
+                price: 0.50,
+                category: 'snacks',
+                tagline: 'Takes a giant cartoon bite!',
+                callout: 'NOM NOM! 🍪',
+                bg: '#FEF3C7',
+                svg: `
+                <svg viewBox="0 0 64 64">
+                    <g class="cookie-whole">
+                        <circle cx="32" cy="32" r="20" fill="#D97706" stroke="#18181B" stroke-width="2.8"/>
+                        <!-- Chocolate Chips -->
+                        <circle cx="24" cy="25" r="2.8" fill="#451A03"/>
+                        <circle cx="34" cy="22" r="2.5" fill="#451A03"/>
+                        <circle cx="23" cy="38" r="3" fill="#451A03"/>
+                        <circle cx="35" cy="40" r="2.8" fill="#451A03"/>
+                        <circle cx="30" cy="31" r="2.2" fill="#451A03"/>
+                        <!-- Giant Cartoon Bite Cutout -->
+                        <g class="cookie-bite-mask">
+                            <circle cx="48" cy="24" r="8" fill="#FEF3C7"/>
+                            <circle cx="51" cy="33" r="7" fill="#FEF3C7"/>
+                            <path d="M43 18 A8 8 0 0 0 43 30 A7 7 0 0 0 45 39" fill="none" stroke="#18181B" stroke-width="2.6" stroke-linecap="round"/>
+                        </g>
+                    </g>
+                    <!-- Flying Crumbs -->
+                    <circle class="cookie-crumb" style="--cx:14px; --cy:-10px;" cx="46" cy="24" r="2.2" fill="#D97706" stroke="#18181B" stroke-width="1.2"/>
+                    <circle class="cookie-crumb cc2" style="--cx:18px; --cy:6px;" cx="48" cy="30" r="2.5" fill="#451A03"/>
+                    <circle class="cookie-crumb cc3" style="--cx:12px; --cy:16px;" cx="45" cy="35" r="2" fill="#D97706" stroke="#18181B" stroke-width="1.2"/>
+                </svg>`
+            },
+            {
+                id: 'candy-bars',
+                name: 'Candy Bars',
+                price: 1.00,
+                category: 'snacks',
+                tagline: 'Unwraps & does a happy dance!',
+                callout: 'YUMM!! 🍫',
+                bg: '#F3E8FF',
+                svg: `
+                <svg viewBox="0 0 64 64">
+                    <!-- Sparkles -->
+                    <path class="candy-sparkle" d="M14 14 L16 19 L21 21 L16 23 L14 28 L12 23 L7 21 L12 19 Z" fill="#FACC15" stroke="#18181B" stroke-width="1.5"/>
+                    <path class="candy-sparkle" d="M50 12 L51.5 16 L55.5 17.5 L51.5 19 L50 23 L48.5 19 L44.5 17.5 L48.5 16 Z" fill="#FACC15" stroke="#18181B" stroke-width="1.5"/>
+                    <g class="candy-group">
+                        <!-- Exposed Chocolate Squares -->
+                        <rect x="20" y="13" width="24" height="36" rx="4" fill="#78350F" stroke="#18181B" stroke-width="2.8"/>
+                        <line x1="32" y1="13" x2="32" y2="34" stroke="#451A03" stroke-width="2.2"/>
+                        <line x1="20" y1="23" x2="44" y2="23" stroke="#451A03" stroke-width="2.2"/>
+                        <!-- Sliding Purple/Gold Wrapper -->
+                        <g class="candy-wrapper">
+                            <rect x="18" y="28" width="28" height="24" rx="3" fill="#9333EA" stroke="#18181B" stroke-width="2.8"/>
+                            <rect x="18" y="28" width="28" height="5" fill="#FACC15" stroke="#18181B" stroke-width="2"/>
+                        </g>
+                    </g>
+                </svg>`
+            },
+            {
+                id: 'rice-krispy',
+                name: 'Rice Krispy Treats',
+                price: 0.25,
+                category: 'snacks',
+                tagline: 'Snap! Crackle! Pop! comic jump!',
+                callout: 'SNAP! POP! 💥',
+                bg: '#CCFBF1',
+                svg: `
+                <svg viewBox="0 0 64 64">
+                    <!-- Comic Book Burst Text -->
+                    <g class="rk-comic-burst">
+                        <rect x="8" y="5" width="48" height="14" rx="7" fill="#FFD60A" stroke="#18181B" stroke-width="2"/>
+                        <text x="32" y="15" text-anchor="middle" font-family="Fredoka, sans-serif" font-weight="700" font-size="9.5" fill="#18181B">SNAP! POP!</text>
+                    </g>
+                    <!-- Gooey Marshmallow Square -->
+                    <g class="rk-treat">
+                        <rect x="16" y="23" width="32" height="28" rx="6" fill="#FDE68A" stroke="#18181B" stroke-width="2.8"/>
+                        <!-- Puffed Rice Texture Dots -->
+                        <circle cx="24" cy="30" r="2.2" fill="#FFFBEB" stroke="#D97706" stroke-width="1"/>
+                        <circle cx="34" cy="29" r="2.5" fill="#FFFBEB" stroke="#D97706" stroke-width="1"/>
+                        <circle cx="41" cy="34" r="2" fill="#FFFBEB" stroke="#D97706" stroke-width="1"/>
+                        <circle cx="26" cy="41" r="2.5" fill="#FFFBEB" stroke="#D97706" stroke-width="1"/>
+                        <circle cx="37" cy="43" r="2.2" fill="#FFFBEB" stroke="#D97706" stroke-width="1"/>
+                        <!-- Stretchy Marshmallow Drip -->
+                        <path d="M20 23 Q25 32 30 23 Q35 30 40 23" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
+                    </g>
+                </svg>`
+            }
+        ];
+
+        // Cart state: { [itemId]: quantity }
+        let stash = {};
+
+        /**
+         * Format number into $X.XX string
+         */
+        function formatMoney(num) {
+            return '$' + num.toFixed(2);
+        }
+
+        /**
+         * Spawn a comic-book floating callout bubble near the user's tap/click
+         */
+        function spawnCallout(text, x, y) {
+            const el = document.createElement('div');
+            el.className = 'floating-callout';
+            el.textContent = text;
+            el.style.left = x + 'px';
+            el.style.top = (y - 16) + 'px';
+            document.body.appendChild(el);
+            setTimeout(() => el.remove(), 860);
+        }
+
+        /**
+         * Render all Drink and Snack cards
+         */
+        function renderMenu() {
+            const drinksGrid = document.getElementById('drinks-grid');
+            const snacksGrid = document.getElementById('snacks-grid');
+            drinksGrid.innerHTML = '';
+            snacksGrid.innerHTML = '';
+
+            MENU_ITEMS.forEach(item => {
+                const qty = stash[item.id] || 0;
+                const card = document.createElement('article');
+                card.id = `card-${item.id}`;
+                card.className = `menu-card card-${item.id} ${qty > 0 ? 'selected' : ''}`;
+
+                card.innerHTML = `
+                    <div class="card-top">
+                        <div class="icon-stage" style="background-color: ${item.bg};">
+                            ${item.svg}
+                        </div>
+                        <div class="item-info">
+                            <h3 class="item-name">${item.name}</h3>
+                            <p class="item-tagline">${item.tagline}</p>
+                            <span class="price-badge">${formatMoney(item.price)}</span>
+                        </div>
+                    </div>
+                    <div class="card-actions">
+                        <span class="tap-hint">${qty > 0 ? 'In your stash!' : 'Tap card to add'}</span>
+                        <div class="stepper">
+                            ${qty > 0 ? `
+                                <button type="button" class="btn-step btn-minus" aria-label="Remove one ${item.name}" data-action="minus">−</button>
+                                <span class="qty-pill">${qty}</span>
+                            ` : ''}
+                            <button type="button" class="btn-step btn-plus" aria-label="Add one ${item.name}" data-action="plus">+</button>
+                        </div>
+                    </div>
+                `;
+
+                // Handle card clicks & stepper buttons
+                card.addEventListener('click', (e) => {
+                    const minusBtn = e.target.closest('[data-action="minus"]');
+                    const plusBtn = e.target.closest('[data-action="plus"]');
+
+                    if (minusBtn) {
+                        e.stopPropagation();
+                        updateItem(item.id, -1, e);
+                    } else {
+                        // Clicking "+" or anywhere else on the card adds 1 and triggers the funny animation!
+                        updateItem(item.id, 1, e, true);
+                    }
+                });
+
+                if (item.category === 'drinks') {
+                    drinksGrid.appendChild(card);
+                } else {
+                    snacksGrid.appendChild(card);
+                }
+            });
+        }
+
+        /**
+         * Update quantity, trigger item's special animation burst, and recalculate total
+         */
+        function updateItem(id, delta, event, triggerBurst = false) {
+            const current = stash[id] || 0;
+            const next = Math.max(0, current + delta);
+
+            if (next === 0) {
+                delete stash[id];
+            } else {
+                stash[id] = next;
+            }
+
+            renderMenu();
+            updateTotals();
+
+            if (triggerBurst && delta > 0) {
+                const itemObj = MENU_ITEMS.find(i => i.id === id);
+                const cardEl = document.getElementById(`card-${id}`);
+                if (cardEl) {
+                    cardEl.classList.remove('is-acting');
+                    // Force reflow so rapid clicks restart the animation cleanly
+                    void cardEl.offsetWidth;
+                    cardEl.classList.add('is-acting');
+                    setTimeout(() => {
+                        const freshCard = document.getElementById(`card-${id}`);
+                        if (freshCard) freshCard.classList.remove('is-acting');
+                    }, 700);
+                }
+
+                // Spawn comic callout text at click coordinates
+                if (event && itemObj) {
+                    const rect = cardEl.getBoundingClientRect();
+                    const clickX = event.clientX || (rect.left + rect.width / 2);
+                    const clickY = event.clientY || (rect.top + 30);
+                    spawnCallout(itemObj.callout, clickX, clickY);
+                }
+            }
+        }
+
+        /**
+         * Recalculate total cost and item count in the sticky bottom bar
+         */
+        function updateTotals() {
+            let totalCost = 0;
+            let totalCount = 0;
+
+            MENU_ITEMS.forEach(item => {
+                const qty = stash[item.id] || 0;
+                totalCost += qty * item.price;
+                totalCount += qty;
+            });
+
+            document.getElementById('stash-total').textContent = formatMoney(totalCost);
+            document.getElementById('stash-count-label').textContent = `(${totalCount} ${totalCount === 1 ? 'item' : 'items'})`;
+            document.getElementById('header-badge-count').textContent = totalCount;
+
+            const clearBtn = document.getElementById('btn-clear');
+            const checkoutBtn = document.getElementById('btn-checkout');
+            const isEmpty = totalCount === 0;
+
+            clearBtn.disabled = isEmpty;
+            checkoutBtn.disabled = isEmpty;
+        }
+
+        /**
+         * Empty the snack stash
+         */
+        function clearStash() {
+            stash = {};
+            renderMenu();
+            updateTotals();
+        }
+
+        /**
+         * Open Receipt Modal & Fire Confetti!
+         */
+        function openCheckoutModal() {
+            const receiptList = document.getElementById('receipt-list');
+            receiptList.innerHTML = '';
+            let total = 0;
+
+            MENU_ITEMS.forEach(item => {
+                const qty = stash[item.id] || 0;
+                if (qty > 0) {
+                    const subtotal = qty * item.price;
+                    total += subtotal;
+                    const li = document.createElement('li');
+                    li.className = 'receipt-row';
+                    li.innerHTML = `
+                        <span>${qty}x ${item.name}</span>
+                        <span>${formatMoney(subtotal)}</span>
+                    `;
+                    receiptList.appendChild(li);
+                }
+            });
+
+            document.getElementById('receipt-total-val').textContent = formatMoney(total);
+            document.getElementById('checkout-modal').classList.add('open');
+            launchConfetti();
+        }
+
+        function closeCheckoutModal() {
+            document.getElementById('checkout-modal').classList.remove('open');
+        }
+
+        /**
+         * Copy plain-text order summary to clipboard
+         */
+        function copyReceiptText() {
+            let lines = ['⚡ MEGA SNACK SHACK ORDER ⚡'];
+            let total = 0;
+            MENU_ITEMS.forEach(item => {
+                const qty = stash[item.id] || 0;
+                if (qty > 0) {
+                    const sub = qty * item.price;
+                    total += sub;
+                    lines.push(`${qty}x ${item.name} - ${formatMoney(sub)}`);
+                }
+            });
+            lines.push(`TOTAL DUE: ${formatMoney(total)}`);
+
+            const textarea = document.createElement('textarea');
+            textarea.value = lines.join('\n');
+            textarea.style.position = 'fixed';
+            textarea.style.left = '-9999px';
+            document.body.appendChild(textarea);
+            textarea.select();
+            try {
+                document.execCommand('copy');
+                const copyBtn = document.getElementById('btn-copy-receipt');
+                const orig = copyBtn.innerHTML;
+                copyBtn.innerHTML = '✅ Copied!';
+                setTimeout(() => { copyBtn.innerHTML = orig; }, 1600);
+            } catch (err) {
+                // Silent fallback
+            }
+            document.body.removeChild(textarea);
+        }
+
+        /**
+         * ==========================================================================
+         * SELF-CONTAINED CONFETTI CANNON (Zero external dependencies)
+         * ==========================================================================
+         */
+        function launchConfetti() {
+            const canvas = document.getElementById('confetti-canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            const colors = ['#FFD60A', '#FF4D8D', '#00E5FF', '#39FF14', '#9D4EDD', '#FF7B00'];
+            const pieces = [];
+
+            for (let i = 0; i < 110; i++) {
+                pieces.push({
+                    x: canvas.width * 0.5 + (Math.random() - 0.5) * 160,
+                    y: canvas.height * 0.55,
+                    vx: (Math.random() - 0.5) * 18,
+                    vy: (Math.random() * -16) - 6,
+                    size: Math.random() * 9 + 6,
+                    color: colors[Math.floor(Math.random() * colors.length)],
+                    rot: Math.random() * 360,
+                    vRot: (Math.random() - 0.5) * 14
+                });
+            }
+
+            let frame = 0;
+            function animateConfetti() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                let active = false;
+
+                pieces.forEach(p => {
+                    p.x += p.vx;
+                    p.y += p.vy;
+                    p.vy += 0.45; // gravity
+                    p.vx *= 0.98;
+                    p.rot += p.vRot;
+
+                    if (p.y < canvas.height + 30) {
+                        active = true;
+                        ctx.save();
+                        ctx.translate(p.x, p.y);
+                        ctx.rotate((p.rot * Math.PI) / 180);
+                        ctx.fillStyle = p.color;
+                        ctx.strokeStyle = '#18181B';
+                        ctx.lineWidth = 1.5;
+                        ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size * 0.65);
+                        ctx.strokeRect(-p.size / 2, -p.size / 2, p.size, p.size * 0.65);
+                        ctx.restore();
+                    }
+                });
+
+                frame++;
+                if (active && frame < 180) {
+                    requestAnimationFrame(animateConfetti);
+                } else {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                }
+            }
+
+            animateConfetti();
+        }
+
+        // Close modal when clicking outside the ticket box
+        document.getElementById('checkout-modal').addEventListener('click', (e) => {
+            if (e.target.id === 'checkout-modal') {
+                closeCheckoutModal();
+            }
+        });
+
+        // Boot up menu
+        window.addEventListener('DOMContentLoaded', () => {
+            renderMenu();
+            updateTotals();
+        });
+    </script>
+</body>
+</html>
